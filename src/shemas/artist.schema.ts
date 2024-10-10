@@ -5,16 +5,16 @@ export type ArtistDocument = Artist & Document;
 @Schema()
 export class Artist {
     @Prop({required: true})
-    name: string 
+    name: string;
 
     @Prop()
-    photo: string
+    photo: string;
 
     @Prop()
-    information: string
+    information: string;
 
     @Prop({default: false})
-    isPublished: boolean
+    isPublished: boolean;
 }
 
 export const ArtistSchema = SchemaFactory.createForClass(Artist);

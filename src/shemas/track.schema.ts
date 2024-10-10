@@ -5,16 +5,16 @@ export type TrackDocument = Track & Document;
 @Schema()
 export class Track {
     @Prop({required: true})
-    name: string
+    name: string;
 
     @Prop()
-    duration: string
+    duration: string;
 
     @Prop({required: true})
-    trackNumber: number
+    trackNumber: number;
 
     @Prop({default: false})
-    isPublished: boolean
+    isPublished: boolean;
 
 }
 
