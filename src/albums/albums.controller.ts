@@ -1,4 +1,15 @@
-import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Query, UploadedFile, UseInterceptors } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+  Query,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Album, AlbumDocument } from 'src/shemas/album.schema';
@@ -55,7 +66,7 @@ export class AlbumsController {
   async delete(@Param('id') id: string) {
     const album = await this.AlbumModel.findByIdAndDelete(id);
     if (!album) {
-      throw new NotFoundException("Нет такого альбома!");
+      throw new NotFoundException('Нет такого альбома!');
     }
     return album;
   }
