@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-export type AlmumDocument = Almum & Document;
+export type AlbumDocument = Almum & Document;
 
 
 @Schema({})
