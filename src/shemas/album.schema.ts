@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-export type AlbumDocument = Almum & Document;
+export type AlbumDocument = Album & Document;
 
 
 @Schema({})
-export class Almum {
+export class Album {
     @Prop({required: true})
     name: string
 
@@ -18,4 +18,4 @@ export class Almum {
     year: number
 }
 
-export const AlmumSchema = SchemaFactory.createForClass(Almum)
+export const AlbumSchema = SchemaFactory.createForClass(Album)

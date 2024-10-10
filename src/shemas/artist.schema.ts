@@ -17,4 +17,4 @@ export class Artist {
     isPublished: boolean
 }
 
-export const AlbumSchema = SchemaFactory.createForClass(Artist);
+export const ArtistSchema = SchemaFactory.createForClass(Artist);
