@@ -25,7 +25,7 @@ export class UsersController {
         email: UserData.email,
         password: UserData.password,
         displayName: UserData.displayName,
-        // role: UserData.role,
+        role: UserData.role,
       });
       user.generateToken();
 

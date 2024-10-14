@@ -17,6 +17,8 @@ import { Album, AlbumDocument } from 'src/shemas/album.schema';
 import { CreateAlbumDto } from './create.album.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { TokenAuthGuard } from 'src/auth/token-auth/token-auth.guard';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { TokenPermitGuard } from 'src/auth/token-auth/token-permit.guard';
 
 @Controller('albums')
 export class AlbumsController {
@@ -64,6 +66,8 @@ export class AlbumsController {
     return album.save();
   }
 
+  @Roles('admin')
+  @UseGuards(TokenAuthGuard, TokenPermitGuard)
   @Delete(':id')
   async delete(@Param('id') id: string) {
     const album = await this.AlbumModel.findByIdAndDelete(id);
