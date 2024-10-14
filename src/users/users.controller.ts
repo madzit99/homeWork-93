@@ -2,13 +2,17 @@ import {
   Body,
   Controller,
   Post,
+  Req,
   UnprocessableEntityException,
+  UseGuards,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose, { Model } from 'mongoose';
 import { User, UserDocument } from 'src/shemas/user.shema';
 import { error } from 'console';
 import { RegisterUserDto } from './register.user.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { Request } from 'express';
 
 @Controller('users')
 export class UsersController {
@@ -21,7 +25,7 @@ export class UsersController {
         email: UserData.email,
         password: UserData.password,
         displayName: UserData.displayName,
-        role: UserData.role,
+        // role: UserData.role,
       });
       user.generateToken();
 
@@ -32,4 +36,11 @@ export class UsersController {
     }
     throw error;
   }
+
+  @UseGuards(AuthGuard('local'))
+  @Post('sessions')
+  async login(@Req() req: Request) {
+    return { message: 'Зарегистрирован.', user: req.user };
+  }
+  
 }

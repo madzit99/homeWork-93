@@ -13,8 +13,8 @@ export class RegisterUserDto {
   @IsString()
   displayName: string;
 
-  @IsString()
-  @IsNotEmpty()
-  role: string;
+  // @IsString()
+  // @IsNotEmpty()
+  // role: string;
 }
 

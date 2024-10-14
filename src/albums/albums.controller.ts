@@ -8,6 +8,7 @@ import {
   Post,
   Query,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -15,6 +16,7 @@ import { Model } from 'mongoose';
 import { Album, AlbumDocument } from 'src/shemas/album.schema';
 import { CreateAlbumDto } from './create.album.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { TokenAuthGuard } from 'src/auth/token-auth/token-auth.guard';
 
 @Controller('albums')
 export class AlbumsController {
@@ -43,7 +45,7 @@ export class AlbumsController {
     }
     return album;
   }
-
+  @UseGuards(TokenAuthGuard)
   @Post()
   @UseInterceptors(
     FileInterceptor('photo', { dest: './public/uploads/albums' }),
