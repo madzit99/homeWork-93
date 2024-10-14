@@ -8,6 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Artist, ArtistSchema } from './shemas/artist.schema';
 import { Track, TrackSchema } from './shemas/track.schema';
 import { Album, AlbumSchema } from './shemas/album.schema';
+import { User, UserSchema } from './shemas/user.shema';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { Album, AlbumSchema } from './shemas/album.schema';
       { name: Album.name, schema: AlbumSchema },
       { name: Artist.name, schema: ArtistSchema },
       { name: Track.name, schema: TrackSchema },
+      { name: User.name, schema: UserSchema },
     ]),
   ],
   controllers: [
